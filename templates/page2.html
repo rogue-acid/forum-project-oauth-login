@@ -25,8 +25,11 @@
 
 {% for post in posts %}
 	
-	<p class="post_text"> {{ post.user }}: {{ post.post }} </p>
+	<p class="post_text">
 	
+	<span> {{ post.user }}, {{current_date}} </span>
+	<span class="span_text"> {{ post.post }} </span>
+	</p>
 {% endfor %}
 
 {% endblock %}

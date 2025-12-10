@@ -7,6 +7,7 @@ import pprint
 import os
 import pymongo
 import sys
+from datetime import date
 
 
 # This code originally from https://github.com/lepture/flask-oauthlib/blob/master/example/github.py
@@ -101,8 +102,9 @@ def renderPage1():
 @app.route('/page2')
 def renderPage2():
     posts = collection.find()
+    current_date = date.today()
 
-    return render_template('page2.html', posts=posts)
+    return render_template('page2.html', posts=posts, current_date=current_date)
     
 
 @app.route("/submitPost")
