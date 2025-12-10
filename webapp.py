@@ -16,7 +16,7 @@ import sys
 
 app = Flask(__name__)
 
-app.debug = False #Change this to False for production
+app.debug = True #Change this to False for production
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1' #Remove once done debugging
 
 app.secret_key = os.environ['SECRET_KEY'] #used to sign session cookies
@@ -100,7 +100,22 @@ def renderPage1():
 
 @app.route('/page2')
 def renderPage2():
-    return render_template('page2.html')
+    posts = collection.find()
+
+    return render_template('page2.html', posts=posts)
+    
+
+@app.route("/submitPost")
+def render_sumbitPost():
+    sentence = request.args['sentence']
+    
+    
+    doc = {"user":session['user_data']['login'], "post":sentence}
+    collection.insert_one(doc)
+    
+  
+    return render_template('message.html', message='Post submited')
+    
 
 #the tokengetter is automatically called to check who is logged in.
 @github.tokengetter
