@@ -1,5 +1,16 @@
 body {
+	background-color: AntiqueWhite;
+}
 
+.post_text {
+	border: solid;
+	padding: 1em;
+	margin-top: 1em;
+	background-color: Azure;
+}
+
+.navbar_color {
+	background-color: DarkGrey;
 }
 
 #content {

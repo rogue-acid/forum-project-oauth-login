@@ -3,13 +3,12 @@
 {% block title %}page2{% endblock %}
 
 {% block content %}
-  <h1>This is Page 2</h1>
 
 
 {% if logged_in %}
 
 	
-	<h1>Make a Post</h1>
+	<h2>Make a Post</h1>
 
     <form action='/submitPost'>
       <label for="sentence">Type a something you want to post.</label>
@@ -18,18 +17,16 @@
       <br><br>
       <input type="submit">
     </form>
-	
-	
-	{% for post in posts %}
-	
-	<p> {{ post }} </p>
-	
-	{% endfor %}
-	
-	
-	
 
 {% else %}
 {% endif %}
+
+<h2>Posts by users</h1>
+
+{% for post in posts %}
+	
+	<p class="post_text"> {{ post.user }}: {{ post.post }} </p>
+	
+{% endfor %}
 
 {% endblock %}
