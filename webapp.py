@@ -7,7 +7,7 @@ import pprint
 import os
 import pymongo
 import sys
-from datetime import date
+
 
 
 # This code originally from https://github.com/lepture/flask-oauthlib/blob/master/example/github.py
@@ -90,20 +90,12 @@ def authorized():
     return render_template('message.html', message=message)
 
 
-@app.route('/page1')
-def renderPage1():
-    if 'user_data' in session:
-        user_data_pprint = pprint.pformat(session['user_data'])#format the user data nicely
-    else:
-        user_data_pprint = '';
-    return render_template('page1.html',dump_user_data=user_data_pprint)
-
 @app.route('/page2')
 def renderPage2():
     posts = collection.find()
-    current_date = date.today()
+    
 
-    return render_template('page2.html', posts=posts, current_date=current_date)
+    return render_template('page2.html', posts=posts)
     
 
 @app.route("/submitPost")
